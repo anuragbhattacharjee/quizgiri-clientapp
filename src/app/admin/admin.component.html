@@ -1,0 +1,31 @@
+<div>
+  <button [routerLink]="['/register']" type="button" class="btn btn-outline-info">
+    <i class="fas fa-plus-circle"></i>
+    Add new Admin
+  </button>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"># ({{admins.length}})</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">User name</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let admin of admins; let i = index" [attr.data-index]="i">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{admin.firstname}}</td>
+      <td>{{admin.lastname}}</td>
+      <td>{{admin.username}}</td>
+      <td>
+        <button (click)=deleteAdmin(admin.username) type="button" class="btn btn-danger">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

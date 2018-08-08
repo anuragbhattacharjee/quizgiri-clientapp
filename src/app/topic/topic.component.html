@@ -1,0 +1,67 @@
+<ss-multiselect-dropdown [options]="_dataService.myOptions" [texts]="myTexts" [(ngModel)]="optionsModel" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+<br /><br />
+
+<form [formGroup]="topicAdditionForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-12">
+        <div>
+          <input type="text" formControlName="topic" placeholder="New topic" class="autocomplete form-control" [ngClass]="{ 'is-invalid': submitted && f.topic.errors }"/>
+          <div *ngIf="submitted && f.topic.errors" class="invalid-feedback">Can't add blank topic</div>
+          <div *ngIf="exists" class="invalid-feedback">topic already exists</div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-12">
+        <input type="textarea" formControlName="desc" placeholder="Write a suitable Description" class="autocomplete form-control"
+        />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-4">
+        <button [disabled]="loading" class="btn btn-primary">
+          <i class="fa fa-plus-circle"></i>
+          Add topic
+        </button>
+        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+        />
+        <!-- <a [routerLink]="['/login']" class="btn btn-link">Cancel</a> -->
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- <textarea rows="4" cols="50" name="desc" form="topicAdditionForm"></textarea> -->
+<!-- <div>
+
+  <button (click)="newCategory()" type="button" class="btn btn-outline-info">
+    <i class="fa fa-plus-circle"></i>
+    Add Topic
+  </button>
+</div> -->
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Topic ({{topics.length}})</th>
+      <th scope="col">Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let topic of topics; let i = index">
+      <th scope="row">{{topic._id}}</th>
+      <td>{{topic.name}}</td>
+      <td>
+        <ul>
+          <li *ngFor="let category of topic.categories">
+            {{category.name}}
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

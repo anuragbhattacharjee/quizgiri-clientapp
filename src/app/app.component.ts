@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
-import { DataService } from './services/data.service';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from './_services/data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
-  tasks: any = [];
-  constructor(private _dataService : DataService){
-    this._dataService.getStudetns().subscribe( res => {
-      this.tasks = res;
-    });
+
+  constructor(private _dataService: DataService) {
+
+  }
+
+  ngOnInit() {
+
   }
 }

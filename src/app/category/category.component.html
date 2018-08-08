@@ -1,0 +1,68 @@
+<form [formGroup]="categoryAdditionForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <div class="row">
+
+      <div class="col-md-8">
+        <div class="autocomplete">
+          <input type="text" formControlName="category" placeholder="New Category" class="autocomplete form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }"
+            (input)='categoryAutoComplete()' />
+        </div>
+
+        <div class="Suggestion" *ngIf="categorySuggestions.length >= 1">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let category of categorySuggestions" (click)=selectCategory(category.name)>
+              <a>{{category.name}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+          <div *ngIf="f.category.errors.required">Can't add blank category</div>
+        </div>
+
+        <div *ngIf="exists" class="invalid-feedback">
+          <div *ngIf="exists">Category already exists</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <button [disabled]="loading" class="btn btn-primary">
+          <i class="fa fa-plus-circle"></i>Add Category
+        </button>
+        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+        />
+        <!-- <a [routerLink]="['/login']" class="btn btn-link">Cancel</a> -->
+      </div>
+    </div>
+  </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Category name ({{categories.length}})</th>
+      <th scope="col">Topics</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories">
+      <th scope="row">{{category._id}}</th>
+      <td>{{category.name}}</td>
+      <td>
+        <ul>
+          Total topics : {{category.topics.length}}
+          <li *ngFor="let topic of category.topics">
+            {{ topic.name }}
+          </li>
+        </ul>
+      </td>
+      <td>
+        <a (click)="deleteCategory(category)" styel="color: red">
+          <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!-- <div style="text-align:center">
   <h1>
     Welcome to {{title}}!
   </h1>
@@ -9,4 +9,69 @@
     {{task.name}}
   </li>
 </ul>
+</div> -->
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Quizlet</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a routerLink="" class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="category" class="nav-link" href="#">Category</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="topic" class="nav-link" href="#">Topic</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="question" class="nav-link" href="#">Question</a>
+      </li>
+      <li class="nav-item">
+          <a routerLink="addition" class="nav-link" href="#">Add a question</a>
+        </li>
+      <li class="nav-item">
+        <a routerLink="register" class="nav-link" href="#">Register an admin</a>
+      </li>
+      <li class="nav-item">
+          <a routerLink="admin" class="nav-link" href="#">Admins</a>
+        </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Addition
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a routerLink="category" class="dropdown-item" href="#">Add a category</a>
+          <a routerLink="topic" class="dropdown-item" href="#">Add a topic</a>
+          <a routerLink="addition" class="dropdown-item" href="#">Add a question</a>
+          <!-- <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a> -->
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <!-- <form class="form-inline my-2 my-lg-0" [formGroup]="form">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
+  </div>
+</nav>
+
+
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-6 offset-sm-3">
+              <alert></alert>
+              <router-outlet></router-outlet>
+          </div>
+      </div>
+  </div>
+</div>
