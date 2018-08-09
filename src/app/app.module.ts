@@ -33,6 +33,7 @@ import { DataService } from './_services/data.service';
 import {DataResolve} from './resolve';
 
 
+
 @NgModule({
     imports: [
         BrowserModule,

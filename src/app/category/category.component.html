@@ -21,9 +21,9 @@
           <div *ngIf="f.category.errors.required">Can't add blank category</div>
         </div>
 
-        <div *ngIf="exists" class="invalid-feedback">
+        <!-- <div *ngIf="exists" class="invalid-feedback">
           <div *ngIf="exists">Category already exists</div>
-        </div>
+        </div> -->
       </div>
       <div class="col-md-4">
         <button [disabled]="loading" class="btn btn-primary">

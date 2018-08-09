@@ -1,4 +1,4 @@
-<ss-multiselect-dropdown [options]="_dataService.myOptions" [texts]="myTexts" [(ngModel)]="optionsModel" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+<ss-multiselect-dropdown [options]="_dataService.myOptions" [texts]="myTexts" [(ngModel)]="optionsModel" (ngModelChange)="onChange()"></ss-multiselect-dropdown>
 <br /><br />
 
 <form [formGroup]="topicAdditionForm" (ngSubmit)="onSubmit()">
@@ -8,7 +8,7 @@
         <div>
           <input type="text" formControlName="topic" placeholder="New topic" class="autocomplete form-control" [ngClass]="{ 'is-invalid': submitted && f.topic.errors }"/>
           <div *ngIf="submitted && f.topic.errors" class="invalid-feedback">Can't add blank topic</div>
-          <div *ngIf="exists" class="invalid-feedback">topic already exists</div>
+          <!-- <div *ngIf="exists" class="invalid-feedback">topic already exists</div> -->
         </div>
       </div>
     </div>

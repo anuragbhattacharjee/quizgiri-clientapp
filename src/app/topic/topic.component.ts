@@ -23,29 +23,6 @@ export class TopicComponent implements OnInit {
     loading = false;
     max = 0;
 
-    private isOpen: boolean = false;
-    constructor(private _el: ElementRef,
-        private _dataService: DataService,
-        private route: ActivatedRoute,
-        private formBuilder: FormBuilder,
-        private alertService: AlertService) {
-
-        this.categories = this.route.snapshot.data['data'];
-
-        this.myOptions = this._dataService.myOptions;
-
-    }
-
-    ngOnInit() {
-        this.getTopics();
-
-        this.topicAdditionForm = this.formBuilder.group({
-            topic: ['', Validators.required],
-            desc: [''],
-            tournament: Boolean
-        });
-    }
-
     mySettings: IMultiSelectSettings = {
         enableSearch: true,
         checkedStyle: 'fontawesome',
@@ -66,6 +43,31 @@ export class TopicComponent implements OnInit {
         defaultTitle: 'Select Category',
         allSelected: 'All selected',
     };
+
+    private isOpen: Boolean = false;
+    constructor(private _el: ElementRef,
+        public _dataService: DataService,
+        private route: ActivatedRoute,
+        private formBuilder: FormBuilder,
+        private alertService: AlertService) {
+
+        this.categories = this.route.snapshot.data['data'];
+
+        this.myOptions = this._dataService.myOptions;
+
+    }
+
+    ngOnInit() {
+        this.getTopics();
+
+        this.topicAdditionForm = this.formBuilder.group({
+            topic: ['', Validators.required],
+            desc: [''],
+            tournament: Boolean
+        });
+    }
+
+
 
     get f() { return this.topicAdditionForm.controls; }
 
