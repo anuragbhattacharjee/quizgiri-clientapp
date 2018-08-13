@@ -102,7 +102,8 @@ export class TopicComponent implements OnInit {
                 if (this.topics[i]._id > this.max) {
                     this.max = this.topics[i]._id;
                 }
-        }) ;
+            }
+        });
     }
 
     onSubmit() {

@@ -58,7 +58,7 @@ export class DataService {
     });
   }
 
-  createQuestion(question){
+  createQuestion(question) {
     const headers = new HttpHeaders()
     .set('Authorization', 'my-auth-token')
     .set('Content-Type', 'application/json');
@@ -69,7 +69,7 @@ export class DataService {
   }
 
   getTopics() {
-    return this._http.get(this.serverAddress + "detailTopics");
+    return this._http.get(this.serverAddress + 'detailTopics');
   }
 
   getDetailsCategories() {
