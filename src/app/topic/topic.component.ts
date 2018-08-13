@@ -89,9 +89,9 @@ export class TopicComponent implements OnInit {
 
 
     onChange() {
-        //angular-2-dropdown-multiselect
-        //drop down select on change
-        //console.log(this.optionsModel);
+        // angular-2-dropdown-multiselect
+        // drop down select on change
+        // console.log(this.optionsModel);
     }
 
     getTopics() {
@@ -99,11 +99,10 @@ export class TopicComponent implements OnInit {
             this.topics = res;
 
             for (let i = 0; i < this.topics.length; i++) {
-                if (this.topics[i]._id > this.max) this.max = this.topics[i]._id;
-            }
-        });
-
-
+                if (this.topics[i]._id > this.max) {
+                    this.max = this.topics[i]._id;
+                }
+        }) ;
     }
 
     onSubmit() {
@@ -114,13 +113,13 @@ export class TopicComponent implements OnInit {
             return;
         }
 
-        let obj = {
+        const obj = {
             _id: this.max + 1,
             category_id: this.optionsModel,
             name: this.topicAdditionForm.controls.topic.value,
             desc: this.topicAdditionForm.controls.desc.value,
             tournament: false
-        }
+        };
 
         this._dataService.createTopic(obj).subscribe(res => {
             this.alertService.success('Topic added successfully', true);

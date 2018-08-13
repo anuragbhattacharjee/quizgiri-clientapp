@@ -5,8 +5,8 @@ import { User } from '../_models';
  
 @Injectable()
 export class UserService {
-    //serverAddress = "https://quizgiri.herokuapp.com/tasks";
-    serverAddress = "http://localhost:5000/api/";
+    serverAddress = "https://quizgiri.herokuapp.com/tasks";
+    // serverAddress = "http://localhost:5000/api/";
 
     constructor(private http: HttpClient) { }
  
