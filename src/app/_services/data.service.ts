@@ -9,7 +9,7 @@ export class DataService {
   categories: any = [];
   myOptions: any = [];
 
-  serverAddress = 'https://quizgiri.herokuapp.com/tasks';
+  serverAddress = 'https://quizgiri.herokuapp.com/api/';
   // serverAddress = "http://localhost:5000/api/";
   result;
   constructor(private _http: HttpClient) { }
