@@ -49,6 +49,7 @@
       <th scope="col">#</th>
       <th scope="col">Topic ({{topics.length}})</th>
       <th scope="col">Category</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -61,6 +62,11 @@
             {{category.name}}
           </li>
         </ul>
+      </td>
+      <td>
+        <a (click)="deleteTopic(topic)" styel="color: red">
+          <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+        </a>
       </td>
     </tr>
   </tbody>

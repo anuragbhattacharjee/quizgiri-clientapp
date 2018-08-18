@@ -134,4 +134,11 @@ export class TopicComponent implements OnInit {
             this.submitted = false;
         });
     }
+
+    deleteTopic(topic) {
+        this._dataService.deleteTopic(topic._id).subscribe( x => {
+            this.getTopics();
+        });
+        // console.log(category);
+    }
 }

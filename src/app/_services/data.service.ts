@@ -49,6 +49,10 @@ export class DataService {
     });
   }
 
+  deleteCategory(categoryID) {
+      return this._http.delete(this.serverAddress + 'category/' + categoryID);
+  }
+
   createTopic(topic) {
     const headers = new HttpHeaders()
       .set('Authorization', 'my-auth-token')
@@ -72,6 +76,10 @@ export class DataService {
   getTopics() {
     return this._http.get(this.serverAddress + 'detailTopics');
   }
+
+  deleteTopic(topicID) {
+    return this._http.delete(this.serverAddress + 'topic/' + topicID);
+}
 
   getDetailsCategories() {
     return this._http.get(this.serverAddress + "detailCategories");

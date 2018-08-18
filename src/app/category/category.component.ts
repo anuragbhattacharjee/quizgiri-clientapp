@@ -88,6 +88,9 @@ export class CategoryComponent implements OnInit {
     }
 
     deleteCategory(category) {
-        console.log(category);
+        this._dataService.deleteCategory(category._id).subscribe( x => {
+            this.getDetailsCategories();
+        });
+        // console.log(category);
     }
 }
