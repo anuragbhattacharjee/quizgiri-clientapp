@@ -31,6 +31,7 @@ export class DataService {
     return this._http.get(this.serverAddress + "categories")
     .map( res => {
       this.categories = res;
+      this.myOptions = [];
       for (let i = 0; i < this.categories.length; i++) {
           this.myOptions.push({ id: this.categories[i]._id, name: this.categories[i].name });
       }
